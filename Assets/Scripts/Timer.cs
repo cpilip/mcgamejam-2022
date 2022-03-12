@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class Timer : MonoBehaviour
     void OnTimerEnd()
     {
         // force teleport player back to safe room
-        Debug.Log("timer end");
+        SceneManager.LoadScene("Burrow");
+        // switch scene: sceneStateMgr will handle saves
     }
 
     // Start is called before the first frame update
@@ -28,6 +30,7 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // TODO: flash when low, play sound
         if (currentTime > 0)
         {
             currentTime = currentTime - Time.deltaTime;
