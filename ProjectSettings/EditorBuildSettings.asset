@@ -8,4 +8,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/TestScene.unity
+    guid: 602016c0fb63867458055e468c3bfcd7
+  - enabled: 1
+    path: Assets/Scenes/Red.unity
+    guid: e80bed0945df33d4584d65c1e82ec430
+  - enabled: 1
+    path: Assets/Scenes/Blue.unity
+    guid: faf1e4fa30aa23240b322ec4bce5e19c
+  - enabled: 1
+    path: Assets/Scenes/Green.unity
+    guid: e98fb50077002e843b4c41ae830c243d
+  - enabled: 1
+    path: Assets/Scenes/Burrow.unity
+    guid: eb7ccdfb4eb441d4ebfd282f9d993cac
+  - enabled: 1
+    path: Assets/Scenes/Finale.unity
+    guid: 2130c6e12a41441469206eee05aff1d0
   m_configObjects: {}

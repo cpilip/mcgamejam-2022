@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
-public abstract class Interactable : MonoBehaviour
+
+public interface Interactable
 {
-    public virtual void InteractWidth()
+    public virtual void InteractWith()
     {
-        Debug.LogError(this.gameObject.name + " has no interactWith() function overload.");
     }
 }

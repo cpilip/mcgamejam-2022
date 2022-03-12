@@ -8,6 +8,7 @@ public class CharacterInteractor : MonoBehaviour
 
     void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         m_current = null;
     }
 
