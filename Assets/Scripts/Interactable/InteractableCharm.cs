@@ -37,8 +37,4 @@ public class InteractableCharm : Interactable
         }
     }
 
-    public void ResetState()
-    {
-        
-    }
 }
