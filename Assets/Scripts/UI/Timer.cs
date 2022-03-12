@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     private GameObject player;
+    private SoundManager smgr;
 
     private Image timer;
     private bool isRunning;
@@ -32,6 +33,7 @@ public class Timer : MonoBehaviour
         flash10 = false;
 
         player = GameObject.FindWithTag("Player");
+        smgr = GameObject.FindWithTag("SFX").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -64,14 +66,14 @@ public class Timer : MonoBehaviour
 
     IEnumerator Flash ()
     {
-        Debug.Log("Starting Coroutine...");
+        // Debug.Log("Starting Coroutine...");
         var white = new Color(255, 255, 255);
         var yellow = new Color32(255, 244, 59, 255);
+        smgr.Play("timer");
         for (int i = 0; i < 4; i++)     // run 3 times
         {
             if (timer.color.b == 255)   // if color is white, turn yellow
             {
-                Debug.Log("color is white");
                 timer.color = yellow;
             }
             else

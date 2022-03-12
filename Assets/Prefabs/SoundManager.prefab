@@ -44,4 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f4252be0919af439823e587120c2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  fadeTime: 2
+  sounds:
+  - clip: {fileID: 8300000, guid: c14b923e925053c40ba318508cda57ee, type: 3}
+    name: timer
+    volume: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 8feaee314aa03754bae266e425111d11, type: 3}
+    name: warp
+    volume: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: ac3dc80099673c142b2e05bac9016dda, type: 3}
+    name: musicBurrow
+    volume: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 7f08b1370ce284342996cf1d720dc0c4, type: 3}
+    name: musicBlue
+    volume: 0
+    source: {fileID: 0}
