@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 
@@ -18,6 +19,11 @@ public class CharacterMovementController : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
+    void OneEnable ()
+    {
+        SceneManager.sceneLoaded += ResetToStartPosition;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -27,6 +33,11 @@ public class CharacterMovementController : MonoBehaviour
         {
             jumping = true;
         }
+    }
+
+    void ResetToStartPosition(Scene scene, LoadSceneMode mode)
+    {
+        transform.position = Vector3.zero;
     }
 
     void FixedUpdate()
