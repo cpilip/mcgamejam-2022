@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+enum Dimension
+{
+    RED,
+    GREEN,
+    BLUE
+}
+
 public class SceneStateManager : MonoBehaviour
 {
     private static SceneStateManager instance = null;
@@ -24,11 +31,7 @@ public class SceneStateManager : MonoBehaviour
     }
 
 
-
-    [SerializeField] private bool firstStatue = false;
-    [SerializeField] private bool secondStatue = false;
-    [SerializeField] private bool thirdStatue = false;
-    [SerializeField] private bool fourthStatue = false;
+    [SerializeField] private Dimension m_nextDimToLoad = Dimension.GREEN;
 
     void Awake()
     {
@@ -48,12 +51,16 @@ public class SceneStateManager : MonoBehaviour
                 break;
             case 1:
                 Debug.Log("Swapped to Red.");
+                m_nextDimToLoad = Dimension.GREEN;
                 break;
             case 2:
                 Debug.Log("Swapped to Blue.");
+                m_nextDimToLoad = Dimension.RED;
                 break;
             case 3:
                 Debug.Log("Swapped to Green.");
+                m_nextDimToLoad = Dimension.BLUE;
+
                 break;
             case 4:
                 Debug.Log("Swapped to Burrow.");
@@ -69,5 +76,23 @@ public class SceneStateManager : MonoBehaviour
 
     }
 
-
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("Red");
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SceneManager.LoadScene("Green");
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            SceneManager.LoadScene("Blue");
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            SceneManager.LoadScene("Burrow");
+        }
+    }
 }
