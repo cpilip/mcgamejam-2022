@@ -13,7 +13,6 @@ public class CharacterController : MonoBehaviour
 	[SerializeField] private Transform m_groundCheckPos;
 
 	private Rigidbody2D m_rb2D;
-
 	private bool m_grounded;            
 	private bool m_facingRight = true; 
 	private bool m_airControl = true;
@@ -22,6 +21,7 @@ public class CharacterController : MonoBehaviour
 	private void Awake()
 	{
 		m_rb2D = GetComponent<Rigidbody2D>();
+
 	}
 
 	private void FixedUpdate()
