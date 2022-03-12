@@ -12,9 +12,14 @@ public class ParticleEffectPlayer : MonoBehaviour
         m_pSys = GetComponent<ParticleSystem>();
     }
 
-    void Start()
+    void OnEnable()
     {
         StartCoroutine("RepeatEffect");
+    }
+
+    void OnDisable()
+    {
+        StopCoroutine("RepeatEffect");
     }
 
 
