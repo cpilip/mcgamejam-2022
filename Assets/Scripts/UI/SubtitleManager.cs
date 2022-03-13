@@ -10,6 +10,7 @@ public class SubtitleManager : MonoBehaviour
     private GameObject bo, lo;
     private string line, voiceName, fileName;
     private bool isPlaying;
+    private bool intro, scene1, scene2, scene3;
     private Queue<string> lines;
     private string[] linesArr;
     private int lineCount;
@@ -52,7 +53,8 @@ public class SubtitleManager : MonoBehaviour
     string GetFileName()
     {
         // gets appropriate dialogue based on quest stages
-        return "intro";
+        // if ((m_puzzleSolvedGreen || m_puzzleSolvedRed || m_puzzleSolvedBlue) && !scene1)
+        return null;
     }
 
     IEnumerator TypeLine()
