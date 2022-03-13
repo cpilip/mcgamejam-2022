@@ -10,11 +10,12 @@ public class SubtitleManager : MonoBehaviour
     private GameObject bo, lo;
     private string line, voiceName, fileName;
     private bool isPlaying;
-    private bool intro, scene1, scene2, scene3;
+    private bool intro, scene1, puzz1done;
     private Queue<string> lines;
     private string[] linesArr;
     private int lineCount;
     private int isBeepSpeak;
+    private SceneStateManager scmgr;
 
     private SoundManager smgr;
 
@@ -22,10 +23,16 @@ public class SubtitleManager : MonoBehaviour
     void OnEnable()
     {
         smgr = GameObject.FindWithTag("SFX").GetComponent<SoundManager>();
+        scmgr = GameObject.FindWithTag("SceneMgr").GetComponent<SceneStateManager>();
         bo = GameObject.FindWithTag("Player");
         lo = gameObject;
+
         isPlaying = false;
+        intro = false;
+        scene1 = false;
+        puzz1done = false;
         isBeepSpeak = 0;
+
         lines = new Queue<string>();
         fileName = GetFileName();
         // text copied from file to array
@@ -53,7 +60,11 @@ public class SubtitleManager : MonoBehaviour
     string GetFileName()
     {
         // gets appropriate dialogue based on quest stages
-        // if ((m_puzzleSolvedGreen || m_puzzleSolvedRed || m_puzzleSolvedBlue) && !scene1)
+        if (!intro)
+        {
+            return "intro";
+        }
+        if (intro && !scene1 && puzz1done)
         return null;
     }
 
