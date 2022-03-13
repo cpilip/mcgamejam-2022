@@ -46,7 +46,6 @@ public class SubtitleManager : MonoBehaviour
         {
             bo.GetComponent<CharacterMovementController>().enabled = false;
             StartCoroutine("TypeLine");
-            bo.GetComponent<CharacterMovementController>().enabled = true;
         }
     }
 
@@ -66,13 +65,18 @@ public class SubtitleManager : MonoBehaviour
             line = lines.Dequeue();
             voiceName = line.Substring(0, 2).ToLower();
             line = line.Substring(4);
-            var parentTranform = lo.transform;
+            var parentTransform = lo.transform;
             if (voiceName.Equals("bo")) // defaults to lo.transform, if name is bo change to bo
             {
-                parentTranform = bo.transform;
+                parentTransform = bo.transform;
             }
-            var subtitle = Instantiate(subtitleObj, parentTranform);    // instantiates canvas + text child (index 0)
+            var subtitle = Instantiate(subtitleObj, parentTransform);    // instantiates canvas + text child (index 0)
             subtitle.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
+            if (bo.transform.localScale.x < 0 && voiceName.Equals("bo"))
+            {
+                // if player is flipped, flip text box accordingly
+                subtitle.transform.localScale = new Vector2(subtitle.transform.localScale.x * -1, subtitle.transform.localScale.y);
+            }
             foreach (char letter in line.ToCharArray())
             {
                 subtitle.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text += letter;
@@ -90,6 +94,8 @@ public class SubtitleManager : MonoBehaviour
             yield return new WaitForSeconds(0.8f);
             Destroy(subtitle);
         }
+
+        bo.GetComponent<CharacterMovementController>().enabled = true;
         isPlaying = false;
     }
 }
