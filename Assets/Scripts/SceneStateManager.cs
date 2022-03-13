@@ -218,6 +218,7 @@ public class SceneStateManager : MonoBehaviour
     {
         menuUp = true;
         menu = Instantiate(riddleMenu, FindObjectOfType<Canvas>().transform);
+        Debug.Log(m_currentDim + " CALLED IN DIMENS");
         switch (m_currentDim)
         {
             case Dimension.RED:
@@ -243,7 +244,7 @@ public class SceneStateManager : MonoBehaviour
             case Dimension.BLUE:
                 menu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Dark cannot be seen, cannot be felt,\n"
                                                                                             + "Cannot be heard, cannot be smelt.\n"
-                                                                                            + "The more you have, the less you�ll see.\n"
+                                                                                            + "The more you have, the less you'll see.\n"
                                                                                             + "Here in the deep and dim black sea.\n"
                                                                                             + "We welcome night by twinkling bright,\n"
                                                                                             + "so catch us all to bring the light.";
@@ -292,6 +293,21 @@ public class SceneStateManager : MonoBehaviour
             }
 
         }
+
+        if (m_puzzleSolvedRed && SceneManager.GetActiveScene().name.Equals("Red"))
+        {
+            m_sceneTransitioner.FadeToLevel(4);
+        }
+        if (m_puzzleSolvedGreen && SceneManager.GetActiveScene().name.Equals("Green"))
+        {
+            m_sceneTransitioner.FadeToLevel(4);
+        }
+
+        if (m_puzzleSolvedBlue && SceneManager.GetActiveScene().name.Equals("Blue"))
+        {
+            m_sceneTransitioner.FadeToLevel(4);
+        }
+
 
         if (Input.GetKeyDown(KeyCode.P))
         {

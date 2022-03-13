@@ -65,6 +65,7 @@ public class SubtitleManager : MonoBehaviour
             return "intro";
         }
         if (intro && !scene1 && puzz1done)
+        { }
         return null;
     }
 
