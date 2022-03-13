@@ -204,7 +204,7 @@ public class SceneStateManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            m_sceneTransitioner.FadeToLevel(1);
+            m_sceneTransitioner.FadeToLevel(4);
         }
     }
 }
