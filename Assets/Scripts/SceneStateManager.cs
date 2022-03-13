@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 enum Dimension
 {
@@ -33,6 +34,10 @@ public class SceneStateManager : MonoBehaviour
         }
     }
 
+    public bool debugMode;
+    public GameObject ctrlMenu, riddleMenu;
+    private bool menuUp, gotRiddle;
+    private GameObject menu;
 
     [SerializeField] private Dimension m_currentDim = Dimension.RED;
     [SerializeField] public static bool m_puzzleSolvedGreen = false;
@@ -45,6 +50,7 @@ public class SceneStateManager : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        debugMode = false;
     }
     void OnEnable()
     {
@@ -188,23 +194,103 @@ public class SceneStateManager : MonoBehaviour
         }
     }
 
+    public void GetRiddle()
+    {
+        gotRiddle = true;
+        ShowRiddle();
+    }
+
+    void ShowRiddle()
+    {
+        menuUp = true;
+        switch (m_currentDim)
+        {
+            case Dimension.RED:
+
+                break;
+
+            case Dimension.GREEN:
+                riddleMenu.GetComponent<TextMeshProUGUI>().text = "The wind shall blow, the rain shall fall\n"
+                                                                    + "And to traverse this ancient hall\n"
+                                                                    + "Ensure you have put into place\n"
+                                                                    + "Those items which shall guide your pace\n"
+                                                                    + "To choose the one that does not match\n"
+                                                                    + "Shall send you tumbling down the hatch\n";
+                break;
+
+            case Dimension.BLUE:
+
+                break;
+            default:
+                Debug.Log("No riddle found in scene");
+                break;
+        }
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            m_sceneTransitioner.FadeToLevel(1);
+            debugMode = !debugMode;     // enables scene changes with keys
         }
-        if (Input.GetKeyDown(KeyCode.G))
+        if (debugMode)
         {
-            m_sceneTransitioner.FadeToLevel(3);
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                m_sceneTransitioner.FadeToLevel(1);
+            }
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                m_sceneTransitioner.FadeToLevel(3);
+            }
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                m_sceneTransitioner.FadeToLevel(2);
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                m_sceneTransitioner.FadeToLevel(4);
+            }
         }
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            m_sceneTransitioner.FadeToLevel(2);
+            if (!menuUp)
+            {
+                var menu = Instantiate(ctrlMenu);
+                menuUp = true;
+            }
+            if (menuUp)
+            {
+                Destroy(menu);
+                menuUp = false;
+            }
         }
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            m_sceneTransitioner.FadeToLevel(4);
+            if (!menuUp)
+            {
+                if (gotRiddle)
+                {
+                    ShowRiddle();
+                }
+            }
+            if (menuUp)
+            {
+                Destroy(menu);
+                menuUp = false;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (menuUp)
+            {
+                Destroy(menu);
+                menuUp = false;
+            }
+            else
+            {
+                Application.Quit();
+            }
         }
     }
 }

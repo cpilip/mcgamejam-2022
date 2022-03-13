@@ -70,7 +70,7 @@ public class Timer : MonoBehaviour
         var white = new Color(255, 255, 255);
         var yellow = new Color32(255, 244, 59, 255);
         smgr.Play("timer");
-        for (int i = 0; i < 4; i++)     // run 3 times
+        for (int i = 0; i < 8; i++)     // run 8 times
         {
             if (timer.color.b == 255)   // if color is white, turn yellow
             {

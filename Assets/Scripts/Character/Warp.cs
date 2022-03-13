@@ -33,14 +33,14 @@ public class Warp : MonoBehaviour
         // get input, while key is held increase alpha of white layer, then teleport
         if (SceneManager.GetActiveScene().buildIndex != 4)
         {
-            if (Input.GetKeyDown(KeyCode.P) && isRunning == false)
+            if (Input.GetKeyDown(KeyCode.T) && isRunning == false)
             {
                 isRunning = true;       // prevents repeating same coroutine
                 currentTime = warpTime; // reset time variable
                 GetComponent<CharacterMovementController>().enabled = false;
                 StartCoroutine("Tp");
             }
-            if (Input.GetKeyUp(KeyCode.P) && isRunning == true)
+            if (Input.GetKeyUp(KeyCode.T) && isRunning == true)
             {
                 isRunning = false;      // reset bool
                 GetComponent<CharacterMovementController>().enabled = true;

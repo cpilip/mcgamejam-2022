@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuButtons : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class MainMenuButtons : MonoBehaviour
     private void Awake()
     {
         credits.SetActive(false);
+    }
+    public void StartGame()
+    {
+        SceneManager.LoadScene("TestScene");
     }
     public void OpenCredits()
     {
