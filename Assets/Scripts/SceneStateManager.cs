@@ -39,6 +39,7 @@ public class SceneStateManager : MonoBehaviour
     [SerializeField] public static bool m_puzzleSolvedRed = false;
     [SerializeField] public static bool m_puzzleSolvedBlue = false;
     public static bool[] statueStates = { false, true, false, true };
+    public static bool[] wallStates = { false, false, false, false };
 
     void Awake()
     {
@@ -80,6 +81,18 @@ public class SceneStateManager : MonoBehaviour
                 break;
             case 3:
                 Debug.Log("Swapped to Green.");
+
+                interactables = GameObject.FindGameObjectsWithTag("State");
+                Transform buttons = interactables[0].transform.GetChild(1);
+
+                foreach (Transform b in buttons)
+                {
+                    b.gameObject.GetComponent<InteractableSeason>().ResetState();
+                }
+
+                note = interactables[0].transform.GetChild(2);
+
+                note.gameObject.GetComponent<InteractableNote>().ResetState();
 
                 break;
             case 4:

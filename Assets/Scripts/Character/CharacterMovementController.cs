@@ -19,7 +19,7 @@ public class CharacterMovementController : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
-    void OneEnable ()
+    void OnEnable ()
     {
         SceneManager.sceneLoaded += ResetToStartPosition;
     }

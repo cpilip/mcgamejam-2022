@@ -27,9 +27,10 @@ public class InteractableCharm : Interactable
         {
             Debug.Log(m_whatCharm + " puzzle not implemented.");
         }
-        else if (m_whatCharm == InteractableCharmType.GreenCharm)
+        else if (m_whatCharm == InteractableCharmType.GreenCharm && SceneStateManager.wallStates[0] && SceneStateManager.wallStates[1] && SceneStateManager.wallStates[2] && SceneStateManager.wallStates[3])
         {
-            Debug.Log(m_whatCharm + " puzzle not implemented.");
+            Debug.Log("Solved Green Puzzle.");
+            SceneStateManager.m_puzzleSolvedGreen = true;
         }
         else
         {
