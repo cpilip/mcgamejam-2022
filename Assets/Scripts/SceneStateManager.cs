@@ -208,7 +208,7 @@ public class SceneStateManager : MonoBehaviour
         switch (m_currentDim)
         {
             case Dimension.RED:
-                menu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "You can�t be caught, do not be killed\n"
+                menu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "You can't be caught, do not be killed\n"
                                                                                             + "Your blood must pump, must not be spilled.\n"
                                                                                             + "So keep your eyes upon the beast\n"
                                                                                             + "Who sees you there, an evening feast\n"
@@ -230,7 +230,7 @@ public class SceneStateManager : MonoBehaviour
             case Dimension.BLUE:
                 menu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Dark cannot be seen, cannot be felt,\n"
                                                                                             + "Cannot be heard, cannot be smelt.\n"
-                                                                                            + "The more you have, the less you�ll see.\n"
+                                                                                            + "The more you have, the less you'll see.\n"
                                                                                             + "Here in the deep and dim black sea.\n"
                                                                                             + "We welcome night by twinkling bright,\n"
                                                                                             + "so catch us all to bring the light.";
