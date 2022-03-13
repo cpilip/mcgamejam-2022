@@ -69,6 +69,18 @@ public class SoundManager : MonoBehaviour
         StartCoroutine(FadeOut(name));
     }
 
+    public void BeepSpeak(string name)
+    {
+        Sound s = System.Array.Find(sounds, Sound => Sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound \"" + name + "\" not found");
+            return;
+        }
+        s.source.pitch = Random.Range(.75f, 1.25f);
+        s.source.Play();
+    }
+
     IEnumerator FadeOut(string name)
     {
         Sound s = System.Array.Find(sounds, Sound => Sound.name == name);
