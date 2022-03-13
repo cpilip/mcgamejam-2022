@@ -40,6 +40,11 @@ public class CharacterMovementController : MonoBehaviour
         transform.position = Vector3.zero;
     }
 
+    public void ResetToPosition(Vector3 pos)
+    {
+        transform.position = pos;
+    }
+
     void FixedUpdate()
     {
         controller.Move(m_horizontalMove * Time.deltaTime, jumping);
