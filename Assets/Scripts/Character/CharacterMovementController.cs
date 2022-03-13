@@ -10,6 +10,7 @@ public class CharacterMovementController : MonoBehaviour
     [SerializeField] private float m_runSpeed = 30.0f;
     [SerializeField] private float m_horizontalMove = 0f;
 
+    [SerializeField] private Animator anim;
     private CharacterController controller;
     private bool jumping = false;
 
@@ -27,11 +28,22 @@ public class CharacterMovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_horizontalMove = Input.GetAxisRaw("Horizontal") * m_runSpeed;
+        float isMoving = Input.GetAxisRaw("Horizontal");
+        m_horizontalMove = isMoving * m_runSpeed;
+
+        if (isMoving == -1 || isMoving == 1)
+        {
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+        }
 
         if (Input.GetButtonDown("Jump"))
         {
             jumping = true;
+            anim.SetTrigger("Jump");
         }
     }
 

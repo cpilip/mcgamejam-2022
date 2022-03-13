@@ -43,6 +43,7 @@ public class SceneStateManager : MonoBehaviour
     [SerializeField] public static bool m_puzzleSolvedGreen = false;
     [SerializeField] public static bool m_puzzleSolvedRed = false;
     [SerializeField] public static bool m_puzzleSolvedBlue = false;
+    private bool burrowTeleporter = false;
     public static bool[] statueStates = { false, true, false, true };
     public static bool[] wallStates = { false, false, false, false };
     public static bool[] lightStates = { false, false, false, false, false, false };
@@ -207,7 +208,7 @@ public class SceneStateManager : MonoBehaviour
         switch (m_currentDim)
         {
             case Dimension.RED:
-                menu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "You can’t be caught, do not be killed\n"
+                menu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "You canï¿½t be caught, do not be killed\n"
                                                                                             + "Your blood must pump, must not be spilled.\n"
                                                                                             + "So keep your eyes upon the beast\n"
                                                                                             + "Who sees you there, an evening feast\n"
@@ -229,7 +230,7 @@ public class SceneStateManager : MonoBehaviour
             case Dimension.BLUE:
                 menu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Dark cannot be seen, cannot be felt,\n"
                                                                                             + "Cannot be heard, cannot be smelt.\n"
-                                                                                            + "The more you have, the less you’ll see.\n"
+                                                                                            + "The more you have, the less youï¿½ll see.\n"
                                                                                             + "Here in the deep and dim black sea.\n"
                                                                                             + "We welcome night by twinkling bright,\n"
                                                                                             + "so catch us all to bring the light.";
@@ -239,9 +240,38 @@ public class SceneStateManager : MonoBehaviour
                 break;
         }
     }
+    public void GoToNextDim()
+    {
+        Debug.Log("Bool is true.");
+        burrowTeleporter = true;
+    }
 
     void Update()
     {
+        
+        Debug.Log(m_currentDim);
+        if (burrowTeleporter)
+        {
+            Debug.Log(m_currentDim);
+            burrowTeleporter = false;
+            switch (m_currentDim)
+            {
+                case Dimension.RED:
+                    Debug.Log("Current dim is red.");
+                    Debug.Log(m_sceneTransitioner);
+                    m_sceneTransitioner.FadeToLevel(1);
+                    break;
+                case Dimension.GREEN:
+                    m_sceneTransitioner.FadeToLevel(3);
+                    break;
+                case Dimension.BLUE:
+                    m_sceneTransitioner.FadeToLevel(2);
+                    break;
+                case Dimension.RETURNTOBURROW:
+                    break;
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             debugMode = !debugMode;     // enables scene changes with keys

@@ -8,6 +8,7 @@ TagManager:
   - State
   - SFX
   - SceneMgr
+  - SceneTransitioner
   layers:
   - Default
   - TransparentFX

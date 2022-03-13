@@ -12,6 +12,7 @@ public class SceneTransitioner : MonoBehaviour
     {
         m_animator = GetComponent<Animator>();
         DontDestroyOnLoad(gameObject.transform.parent.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void FadeToLevel(int buildIndex)
