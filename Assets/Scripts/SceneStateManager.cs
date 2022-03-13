@@ -262,7 +262,7 @@ public class SceneStateManager : MonoBehaviour
     void Update()
     {
         
-        Debug.Log(m_currentDim);
+        // Debug.Log(m_currentDim);
         if (burrowTeleporter)
         {
             burrowTeleporter = false;
@@ -295,9 +295,9 @@ public class SceneStateManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            debugMode = !debugMode;     // enables scene changes with keys
+            debugMode = !debugMode;     // toggle debug mode
         }
-        if (debugMode)
+        if (debugMode)      // debug mode enables scene changes with keys
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
