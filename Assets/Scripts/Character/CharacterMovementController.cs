@@ -19,7 +19,7 @@ public class CharacterMovementController : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
-    void OneEnable ()
+    void OnEnable ()
     {
         SceneManager.sceneLoaded += ResetToStartPosition;
     }
@@ -38,6 +38,11 @@ public class CharacterMovementController : MonoBehaviour
     void ResetToStartPosition(Scene scene, LoadSceneMode mode)
     {
         transform.position = Vector3.zero;
+    }
+
+    public void ResetToPosition(Vector3 pos)
+    {
+        transform.position = pos;
     }
 
     void FixedUpdate()

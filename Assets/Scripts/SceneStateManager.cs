@@ -39,6 +39,8 @@ public class SceneStateManager : MonoBehaviour
     [SerializeField] public static bool m_puzzleSolvedRed = false;
     [SerializeField] public static bool m_puzzleSolvedBlue = false;
     public static bool[] statueStates = { false, true, false, true };
+    public static bool[] wallStates = { false, false, false, false };
+    public static bool[] lightStates = { false, false, false, false, false, false };
 
     void Awake()
     {
@@ -77,9 +79,34 @@ public class SceneStateManager : MonoBehaviour
                 break;
             case 2:
                 Debug.Log("Swapped to Blue.");
+
+                interactables = GameObject.FindGameObjectsWithTag("State");
+                Transform lights = interactables[0].transform.GetChild(0);
+
+                foreach (Transform l in lights)
+                {
+                    l.gameObject.GetComponent<InteractableLight>().ResetState();
+                }
+
+                note = interactables[0].transform.GetChild(1);
+
+                note.gameObject.GetComponent<InteractableNote>().ResetState();
+
                 break;
             case 3:
                 Debug.Log("Swapped to Green.");
+
+                interactables = GameObject.FindGameObjectsWithTag("State");
+                Transform buttons = interactables[0].transform.GetChild(1);
+
+                foreach (Transform b in buttons)
+                {
+                    b.gameObject.GetComponent<InteractableSeason>().ResetState();
+                }
+
+                note = interactables[0].transform.GetChild(2);
+
+                note.gameObject.GetComponent<InteractableNote>().ResetState();
 
                 break;
             case 4:
@@ -177,7 +204,7 @@ public class SceneStateManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            m_sceneTransitioner.FadeToLevel(1);
+            m_sceneTransitioner.FadeToLevel(4);
         }
     }
 }

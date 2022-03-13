@@ -10,6 +10,7 @@ enum InteractableCharmType
 public class InteractableCharm : Interactable
 {
     [SerializeField] private InteractableCharmType m_whatCharm;
+    [SerializeField] private GameObject m_cage;
 
     private void Awake()
     {
@@ -22,14 +23,22 @@ public class InteractableCharm : Interactable
         {
             Debug.Log("Solved Red Puzzle.");
             SceneStateManager.m_puzzleSolvedRed = true;
+            DisablePing();
+            m_cage.SetActive(false);
         }
-        else if (m_whatCharm == InteractableCharmType.BlueCharm)
+        else if (m_whatCharm == InteractableCharmType.BlueCharm && SceneStateManager.lightStates[0] && SceneStateManager.lightStates[1] && SceneStateManager.lightStates[2] && SceneStateManager.lightStates[3] && SceneStateManager.lightStates[4] && SceneStateManager.lightStates[5])
         {
-            Debug.Log(m_whatCharm + " puzzle not implemented.");
+            Debug.Log("Solved Blue Puzzle.");
+            SceneStateManager.m_puzzleSolvedGreen = true;
+            DisablePing();
+            m_cage.SetActive(false);
         }
-        else if (m_whatCharm == InteractableCharmType.GreenCharm)
+        else if (m_whatCharm == InteractableCharmType.GreenCharm && SceneStateManager.wallStates[0] && SceneStateManager.wallStates[1] && SceneStateManager.wallStates[2] && SceneStateManager.wallStates[3])
         {
-            Debug.Log(m_whatCharm + " puzzle not implemented.");
+            Debug.Log("Solved Green Puzzle.");
+            SceneStateManager.m_puzzleSolvedGreen = true;
+            DisablePing();
+            m_cage.SetActive(false);
         }
         else
         {
