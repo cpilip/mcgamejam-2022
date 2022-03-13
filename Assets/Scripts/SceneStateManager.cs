@@ -43,7 +43,7 @@ public class SceneStateManager : MonoBehaviour
     [SerializeField] public static bool m_puzzleSolvedGreen = false;
     [SerializeField] public static bool m_puzzleSolvedRed = false;
     [SerializeField] public static bool m_puzzleSolvedBlue = false;
-    private bool burrowTeleporter = false;
+    public  static bool burrowTeleporter;
     public static bool[] statueStates = { false, true, false, true };
     public static bool[] wallStates = { false, false, false, false };
     public static bool[] lightStates = { false, false, false, false, false, false };
@@ -141,13 +141,18 @@ public class SceneStateManager : MonoBehaviour
         switch (m_currentDim)
         {
             case Dimension.RED:
-                
+
                 if (!m_puzzleSolvedGreen)
                 {
                     m_currentDim = Dimension.GREEN;
-                } else if (!m_puzzleSolvedBlue)
+                }
+                else if (!m_puzzleSolvedBlue)
                 {
                     m_currentDim = Dimension.BLUE;
+                }
+                else if (!m_puzzleSolvedRed)
+                {
+                    m_currentDim = Dimension.RED;
                 }
                 else
                 {
@@ -166,8 +171,12 @@ public class SceneStateManager : MonoBehaviour
                 {
                     m_currentDim = Dimension.RED;
                 }
-                else
+                else if (!m_puzzleSolvedGreen)
                 {
+                    m_currentDim = Dimension.GREEN;
+                }
+                else
+                { 
                     m_currentDim = Dimension.RETURNTOBURROW;
                 }
                 
@@ -183,14 +192,18 @@ public class SceneStateManager : MonoBehaviour
                 {
                     m_currentDim = Dimension.GREEN;
                 }
-                else
+                else if (!m_puzzleSolvedBlue)
                 {
+                    m_currentDim = Dimension.BLUE;
+                }
+                else
+                { 
                     m_currentDim = Dimension.RETURNTOBURROW;
                 }
 
                 break;
             default:
-                Debug.Log("Swapped to Test Scene.");
+                Debug.Log("All puzzles completed, no more dim swapping.");
                 break;
         }
     }
@@ -205,6 +218,7 @@ public class SceneStateManager : MonoBehaviour
     {
         menuUp = true;
         menu = Instantiate(riddleMenu, FindObjectOfType<Canvas>().transform);
+        Debug.Log(m_currentDim + " CALLED IN DIMENS");
         switch (m_currentDim)
         {
             case Dimension.RED:
@@ -252,25 +266,48 @@ public class SceneStateManager : MonoBehaviour
         // Debug.Log(m_currentDim);
         if (burrowTeleporter)
         {
-            Debug.Log(m_currentDim);
             burrowTeleporter = false;
+            Debug.Log("Burrow!");
             switch (m_currentDim)
             {
                 case Dimension.RED:
-                    Debug.Log("Current dim is red.");
                     Debug.Log(m_sceneTransitioner);
                     m_sceneTransitioner.FadeToLevel(1);
                     break;
                 case Dimension.GREEN:
+
+                    Debug.Log(m_sceneTransitioner);
                     m_sceneTransitioner.FadeToLevel(3);
                     break;
                 case Dimension.BLUE:
+
+                    Debug.Log(m_sceneTransitioner);
                     m_sceneTransitioner.FadeToLevel(2);
                     break;
+
                 case Dimension.RETURNTOBURROW:
+
+                    //Win here
                     break;
+
             }
+
         }
+
+        if (m_puzzleSolvedRed && SceneManager.GetActiveScene().name.Equals("Red"))
+        {
+            m_sceneTransitioner.FadeToLevel(4);
+        }
+        if (m_puzzleSolvedGreen && SceneManager.GetActiveScene().name.Equals("Green"))
+        {
+            m_sceneTransitioner.FadeToLevel(4);
+        }
+
+        if (m_puzzleSolvedBlue && SceneManager.GetActiveScene().name.Equals("Blue"))
+        {
+            m_sceneTransitioner.FadeToLevel(4);
+        }
+
 
         if (Input.GetKeyDown(KeyCode.P))
         {
