@@ -11,6 +11,7 @@ public class InteractableNote : Interactable
         {
             m_Read = true;
             DisablePing();
+            GameObject.FindWithTag("SceneMgr").GetComponent<SceneStateManager>().GetRiddle();
         }
        
     }
