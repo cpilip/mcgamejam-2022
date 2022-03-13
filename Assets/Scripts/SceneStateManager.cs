@@ -14,6 +14,7 @@ enum Dimension
 
 public class SceneStateManager : MonoBehaviour
 {
+    [SerializeField] private SceneTransitioner m_sceneTransitioner;
     private static SceneStateManager instance = null;
 
     private SceneStateManager()
@@ -50,7 +51,9 @@ public class SceneStateManager : MonoBehaviour
 
     void InitializeSceneData(Scene scene, LoadSceneMode mode)
     {
-        
+
+        m_sceneTransitioner.gameObject.SetActive(false);
+        m_sceneTransitioner.gameObject.SetActive(true);
         switch (scene.buildIndex)
         {
             case 0:
@@ -58,6 +61,7 @@ public class SceneStateManager : MonoBehaviour
                 break;
             case 1:
                 Debug.Log("Swapped to Red.");
+
                 GameObject[] interactables = GameObject.FindGameObjectsWithTag("State");
                 Transform statues = interactables[0].transform.GetChild(0);
 
@@ -161,19 +165,19 @@ public class SceneStateManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene("Red");
+            m_sceneTransitioner.FadeToLevel(1);
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
-            SceneManager.LoadScene("Green");
+            m_sceneTransitioner.FadeToLevel(3);
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            SceneManager.LoadScene("Blue");
+            m_sceneTransitioner.FadeToLevel(2);
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            SceneManager.LoadScene("Burrow");
+            m_sceneTransitioner.FadeToLevel(1);
         }
     }
 }
