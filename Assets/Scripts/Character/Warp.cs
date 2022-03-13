@@ -65,6 +65,6 @@ public class Warp : MonoBehaviour
         GetComponent<CharacterMovementController>().enabled = true;
         isRunning = false;
         SceneManager.LoadScene("Burrow");
-        white.color = new Color(255, 255, 255, 0);
+        // white.color = new Color(255, 255, 255, 0);
     }
 }

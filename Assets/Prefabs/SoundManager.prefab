@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5103145804945815095}
   m_Layer: 0
   m_Name: SoundManager
-  m_TagString: Untagged
+  m_TagString: SFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 8feaee314aa03754bae266e425111d11, type: 3}
     name: warp
-    volume: 1
+    volume: 0.394
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: ac3dc80099673c142b2e05bac9016dda, type: 3}
     name: musicBurrow
@@ -63,10 +63,10 @@ MonoBehaviour:
     volume: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: a02c249541616ec4084997b0203ad3a2, type: 3}
-    name: voiceLO
-    volume: 0.85
+    name: lo
+    volume: 0.75
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: f6205e093bfca6240b93b2613dffee24, type: 3}
-    name: voiceBO
-    volume: 1
+    name: bo
+    volume: 0.75
     source: {fileID: 0}

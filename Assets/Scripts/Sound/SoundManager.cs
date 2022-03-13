@@ -28,11 +28,14 @@ public class SoundManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.volume = s.volume;
-            if (string.Equals(s.name.Substring(0, 3), "mus"))
+            if (s.name.Length > 2)
             {
-                s.source.loop = true;
-                s.source.volume = 0;
-                s.source.Play();    // audio designer intended for track switching this way
+                if (string.Equals(s.name.Substring(0, 3), "mus"))
+                {
+                    s.source.loop = true;
+                    s.source.volume = 0;
+                    s.source.Play();    // matches stormy's track switch request
+                }
             }
         }
     }
