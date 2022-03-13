@@ -9,7 +9,7 @@ public class DimTeleporter : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Teleporting");
-            SceneStateManager.Instance.GoToNextDim();
+            SceneStateManager.burrowTeleporter = true;
         }
     }
 }

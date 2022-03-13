@@ -29,7 +29,7 @@ public class InteractableCharm : Interactable
         else if (m_whatCharm == InteractableCharmType.BlueCharm && SceneStateManager.lightStates[0] && SceneStateManager.lightStates[1] && SceneStateManager.lightStates[2] && SceneStateManager.lightStates[3] && SceneStateManager.lightStates[4] && SceneStateManager.lightStates[5])
         {
             Debug.Log("Solved Blue Puzzle.");
-            SceneStateManager.m_puzzleSolvedGreen = true;
+            SceneStateManager.m_puzzleSolvedBlue = true;
             DisablePing();
             m_cage.SetActive(false);
         }
