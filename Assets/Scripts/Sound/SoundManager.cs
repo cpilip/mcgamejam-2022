@@ -77,7 +77,7 @@ public class SoundManager : MonoBehaviour
             Debug.LogWarning("Sound \"" + name + "\" not found");
             return;
         }
-        s.source.pitch = Random.Range(.75f, 1.25f);
+        s.source.pitch = Random.Range(.9f, 1.1f);
         s.source.Play();
     }
 

@@ -10,6 +10,7 @@ public class SubtitleManager : MonoBehaviour
     public string voiceName;
     private string line;
     private TextMeshProUGUI subtitle;
+    private bool isPlaying;
 
     private SoundManager smgr;
 
@@ -22,15 +23,18 @@ public class SubtitleManager : MonoBehaviour
         // canvas -> tmp should be the only children of LO
         subtitle = gameObject.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
         subtitle.text = "";
+        isPlaying = false;
     }
 
     void OnTriggerEnter2D()
     {
-        StartCoroutine("TypeLine");
+        if (!isPlaying)
+            StartCoroutine("TypeLine");
     }
 
     IEnumerator TypeLine()
     {
+        isPlaying = true;
         subtitle.text = "";
         foreach (char letter in line.ToCharArray())
         {
@@ -38,5 +42,6 @@ public class SubtitleManager : MonoBehaviour
             smgr.BeepSpeak(voiceName);
             yield return new WaitForSeconds(.1f);
         }
+        isPlaying = false;
     }
 }
