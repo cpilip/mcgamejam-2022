@@ -65,6 +65,9 @@ public class SubtitleManager : MonoBehaviour
             return "intro";
         }
         if (intro && !scene1 && puzz1done)
+        {
+
+        }
         return null;
     }
 
@@ -88,7 +91,7 @@ public class SubtitleManager : MonoBehaviour
             if (bo.transform.localScale.x < 0 && voiceName.Equals("bo"))
             {
                 // if player is flipped, flip text box accordingly
-                subtitle.transform.localScale = new Vector2(subtitle.transform.localScale.x * -1, subtitle.transform.localScale.y);
+                //subtitle.transform.localScale = new Vector2(subtitle.transform.localScale.x * -1, subtitle.transform.localScale.y);
             }
             foreach (char letter in line.ToCharArray())
             {
