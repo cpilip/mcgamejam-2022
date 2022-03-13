@@ -38,6 +38,7 @@ public class SceneStateManager : MonoBehaviour
     [SerializeField] public static bool m_puzzleSolvedGreen = false;
     [SerializeField] public static bool m_puzzleSolvedRed = false;
     [SerializeField] public static bool m_puzzleSolvedBlue = false;
+    private bool burrowTeleporter = false;
     public static bool[] statueStates = { false, true, false, true };
     public static bool[] wallStates = { false, false, false, false };
     public static bool[] lightStates = { false, false, false, false, false, false };
@@ -188,8 +189,37 @@ public class SceneStateManager : MonoBehaviour
         }
     }
 
+    public void GoToNextDim()
+    {
+        Debug.Log("Bool is true.");
+        burrowTeleporter = true;
+    }
+
     void Update()
     {
+        Debug.Log(m_currentDim);
+        if (burrowTeleporter)
+        {
+            Debug.Log(m_currentDim);
+            burrowTeleporter = false;
+            switch (m_currentDim)
+            {
+                case Dimension.RED:
+                    Debug.Log("Current dim is red.");
+                    Debug.Log(m_sceneTransitioner);
+                    m_sceneTransitioner.FadeToLevel(1);
+                    break;
+                case Dimension.GREEN:
+                    m_sceneTransitioner.FadeToLevel(3);
+                    break;
+                case Dimension.BLUE:
+                    m_sceneTransitioner.FadeToLevel(2);
+                    break;
+                case Dimension.RETURNTOBURROW:
+                    break;
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             m_sceneTransitioner.FadeToLevel(1);
