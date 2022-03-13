@@ -203,23 +203,36 @@ public class SceneStateManager : MonoBehaviour
     void ShowRiddle()
     {
         menuUp = true;
+        menu = Instantiate(riddleMenu, FindObjectOfType<Canvas>().transform);
         switch (m_currentDim)
         {
             case Dimension.RED:
-
+                menu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "You can’t be caught, do not be killed\n"
+                                                                                            + "Your blood must pump, must not be spilled.\n"
+                                                                                            + "So keep your eyes upon the beast\n"
+                                                                                            + "Who sees you there, an evening feast\n"
+                                                                                            + "And pray the one, with kit in tow,\n"
+                                                                                            + "She will not see the fangs below\n"
+                                                                                            + "The blades of grass and gleaming eyes\n"
+                                                                                            + "That stare and spell his sure demise.";
                 break;
 
             case Dimension.GREEN:
-                riddleMenu.GetComponent<TextMeshProUGUI>().text = "The wind shall blow, the rain shall fall\n"
-                                                                    + "And to traverse this ancient hall\n"
-                                                                    + "Ensure you have put into place\n"
-                                                                    + "Those items which shall guide your pace\n"
-                                                                    + "To choose the one that does not match\n"
-                                                                    + "Shall send you tumbling down the hatch\n";
+                menu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "The wind shall blow, the rain shall fall\n"
+                                                                                            + "And to traverse this ancient hall\n"
+                                                                                            + "The song of seasons you must sing,\n"
+                                                                                            + "To hide among the verdant spring.\n"
+                                                                                            + "To choose the one that does not match\n"
+                                                                                            + "Shall send you tumbling down the hatch\n";
                 break;
 
             case Dimension.BLUE:
-
+                menu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Dark cannot be seen, cannot be felt,\n"
+                                                                                            + "Cannot be heard, cannot be smelt.\n"
+                                                                                            + "The more you have, the less you’ll see.\n"
+                                                                                            + "Here in the deep and dim black sea.\n"
+                                                                                            + "We welcome night by twinkling bright,\n"
+                                                                                            + "so catch us all to bring the light.";
                 break;
             default:
                 Debug.Log("No riddle found in scene");
@@ -254,12 +267,15 @@ public class SceneStateManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
+            Debug.Log("Input = C");
             if (!menuUp)
             {
-                var menu = Instantiate(ctrlMenu);
+                Debug.Log("Instantiating menu");
+                menu = Instantiate(ctrlMenu, FindObjectOfType<Canvas>().transform);
+                Debug.Log(menu);
                 menuUp = true;
             }
-            if (menuUp)
+            else if (menuUp)
             {
                 Destroy(menu);
                 menuUp = false;
@@ -274,7 +290,7 @@ public class SceneStateManager : MonoBehaviour
                     ShowRiddle();
                 }
             }
-            if (menuUp)
+            else if (menuUp)
             {
                 Destroy(menu);
                 menuUp = false;
