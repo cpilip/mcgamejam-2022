@@ -6,10 +6,18 @@ using UnityEngine.SceneManagement;
 public class MainMenuButtons : MonoBehaviour
 {
     public GameObject credits;
+    private SoundManager smgr;
 
     private void Awake()
     {
         credits.SetActive(false);
+        smgr = GameObject.FindWithTag("SFX").GetComponent<SoundManager>();
+        smgr.StartFadeIn("musicMenu");
+    }
+
+    private void OnDisable()
+    {
+        smgr.StartFadeOut("musicMenu");
     }
     public void StartGame()
     {

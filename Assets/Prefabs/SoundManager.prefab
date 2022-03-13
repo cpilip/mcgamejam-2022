@@ -74,3 +74,7 @@ MonoBehaviour:
     name: musicGreen
     volume: 0.75
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 552d3d3fa1922274a841d0b95b270e1e, type: 3}
+    name: musicMenu
+    volume: 0.75
+    source: {fileID: 0}
