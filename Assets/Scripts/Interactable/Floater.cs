@@ -5,7 +5,7 @@ using UnityEngine;
 public class Floater : MonoBehaviour
 {
     [SerializeField] private float amplitude = 0.5f;
-    [SerializeField] float frequency = 1f;
+    [SerializeField] private float frequency = 1f;
 
     private Vector3 posOffset = new Vector3();
     private Vector3 tempPos = new Vector3();

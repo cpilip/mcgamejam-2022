@@ -4969,6 +4969,7 @@ GameObject:
   - component: {fileID: 466166952}
   - component: {fileID: 466166951}
   - component: {fileID: 466166953}
+  - component: {fileID: 466166954}
   m_Layer: 0
   m_Name: Light 5
   m_TagString: Interactable
@@ -5076,6 +5077,22 @@ MonoBehaviour:
   lights: {fileID: 5348030256605928687}
   m_lightIndex: 4
   m_flickerWaitTime: 4
+--- !u!114 &466166954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466166949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be70bb4f82aa57040b31dd7b748ebcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xamplitude: 0.5
+  xfrequency: 1
+  yamplitude: 0.5
+  yfrequency: 1
 --- !u!1 &1146801294
 GameObject:
   m_ObjectHideFlags: 0
@@ -5088,6 +5105,7 @@ GameObject:
   - component: {fileID: 1146801297}
   - component: {fileID: 1146801296}
   - component: {fileID: 1146801298}
+  - component: {fileID: 1146801299}
   m_Layer: 0
   m_Name: Light 6
   m_TagString: Interactable
@@ -5195,6 +5213,22 @@ MonoBehaviour:
   lights: {fileID: 5348030256605928687}
   m_lightIndex: 5
   m_flickerWaitTime: 3
+--- !u!114 &1146801299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146801294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be70bb4f82aa57040b31dd7b748ebcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xamplitude: 0.5
+  xfrequency: 1
+  yamplitude: 0.5
+  yfrequency: 1
 --- !u!1 &1614845761
 GameObject:
   m_ObjectHideFlags: 0
@@ -44136,6 +44170,7 @@ GameObject:
   - component: {fileID: 5348030255346334017}
   - component: {fileID: 5348030255346334032}
   - component: {fileID: 5348030255346334033}
+  - component: {fileID: 5348030255346334034}
   m_Layer: 0
   m_Name: Light 2
   m_TagString: Interactable
@@ -44175,6 +44210,22 @@ MonoBehaviour:
   lights: {fileID: 5348030256605928687}
   m_lightIndex: 1
   m_flickerWaitTime: 4
+--- !u!114 &5348030255346334034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5348030255346334031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be70bb4f82aa57040b31dd7b748ebcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xamplitude: 0.5
+  xfrequency: 1
+  yamplitude: 0.5
+  yfrequency: 1
 --- !u!1 &5348030255655876355
 GameObject:
   m_ObjectHideFlags: 0
@@ -44187,6 +44238,7 @@ GameObject:
   - component: {fileID: 5348030255655876357}
   - component: {fileID: 5348030255655876358}
   - component: {fileID: 5348030255655876359}
+  - component: {fileID: 5348030255655876360}
   m_Layer: 0
   m_Name: Light 4
   m_TagString: Interactable
@@ -44294,6 +44346,22 @@ MonoBehaviour:
   lights: {fileID: 5348030256605928687}
   m_lightIndex: 3
   m_flickerWaitTime: 5
+--- !u!114 &5348030255655876360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5348030255655876355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be70bb4f82aa57040b31dd7b748ebcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xamplitude: 0.5
+  xfrequency: 1
+  yamplitude: 0.5
+  yfrequency: 1
 --- !u!1 &5348030255707816297
 GameObject:
   m_ObjectHideFlags: 0
@@ -44306,6 +44374,7 @@ GameObject:
   - component: {fileID: 5348030255707816299}
   - component: {fileID: 5348030255707816300}
   - component: {fileID: 5348030255707816301}
+  - component: {fileID: 5348030255707816302}
   m_Layer: 0
   m_Name: Light 1
   m_TagString: Interactable
@@ -44413,6 +44482,22 @@ MonoBehaviour:
   lights: {fileID: 5348030256605928687}
   m_lightIndex: 0
   m_flickerWaitTime: 5
+--- !u!114 &5348030255707816302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5348030255707816297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be70bb4f82aa57040b31dd7b748ebcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xamplitude: 0.5
+  xfrequency: 1
+  yamplitude: 0.5
+  yfrequency: 1
 --- !u!212 &5348030255751506177
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44627,6 +44712,7 @@ GameObject:
   - component: {fileID: 5348030256457705651}
   - component: {fileID: 5348030256457705652}
   - component: {fileID: 5348030256457705653}
+  - component: {fileID: 5348030256457705654}
   m_Layer: 0
   m_Name: Light 3
   m_TagString: Interactable
@@ -44734,6 +44820,22 @@ MonoBehaviour:
   lights: {fileID: 5348030256605928687}
   m_lightIndex: 2
   m_flickerWaitTime: 3
+--- !u!114 &5348030256457705654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5348030256457705649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be70bb4f82aa57040b31dd7b748ebcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xamplitude: 0.5
+  xfrequency: 1
+  yamplitude: 0.5
+  yfrequency: 1
 --- !u!4 &5348030256605928673
 Transform:
   m_ObjectHideFlags: 0
