@@ -16,10 +16,12 @@ public class InteractableSeason : Interactable
     [SerializeField] private GameObject m_wall;
     [SerializeField] private GameObject m_platform;
     private Renderer m_pRenderer;
+    private Renderer m_sRenderer;
 
     void Awake()
     {
         m_pRenderer = m_platform.GetComponent<Renderer>();
+        m_sRenderer = GetComponent<Renderer>();
     }
 
     public override void InteractWith()
@@ -31,6 +33,7 @@ public class InteractableSeason : Interactable
                 SceneStateManager.wallStates[(int)m_whatSeason] = true;
                 m_wall.SetActive(false);
                 GetComponent<Collider2D>().enabled = false;
+                m_sRenderer.enabled = false;
                 DisablePing();
                 break;
             case InteractableSeasonType.Summer:
@@ -40,6 +43,7 @@ public class InteractableSeason : Interactable
                     SceneStateManager.wallStates[(int)m_whatSeason] = true;
                     m_wall.SetActive(false);
                     GetComponent<Collider2D>().enabled = false;
+                    m_sRenderer.enabled = false;
                     DisablePing();
                 }
                 else
@@ -54,6 +58,7 @@ public class InteractableSeason : Interactable
                     SceneStateManager.wallStates[(int)m_whatSeason] = true;
                     m_wall.SetActive(false);
                     GetComponent<Collider2D>().enabled = false;
+                    m_sRenderer.enabled = false;
                     DisablePing();
                 }
                 else
@@ -68,6 +73,7 @@ public class InteractableSeason : Interactable
                     SceneStateManager.wallStates[(int)m_whatSeason] = true;
                     m_wall.SetActive(false);
                     GetComponent<Collider2D>().enabled = false;
+                    m_sRenderer.enabled = false;
                     DisablePing();
                 }
                 else
@@ -85,6 +91,7 @@ public class InteractableSeason : Interactable
         bool wasDisabled = SceneStateManager.wallStates[(int)m_whatSeason];
         m_wall.SetActive(!wasDisabled);
         GetComponent<Collider2D>().enabled = !wasDisabled;
+        m_sRenderer.enabled = !wasDisabled;
         if (wasDisabled) 
         {
             DisablePing(); 
