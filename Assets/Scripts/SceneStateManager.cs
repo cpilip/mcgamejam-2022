@@ -249,7 +249,7 @@ public class SceneStateManager : MonoBehaviour
     void Update()
     {
         
-        Debug.Log(m_currentDim);
+        // Debug.Log(m_currentDim);
         if (burrowTeleporter)
         {
             Debug.Log(m_currentDim);

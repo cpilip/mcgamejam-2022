@@ -13,7 +13,7 @@ public class MainMenuButtons : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("Burrow");
     }
     public void OpenCredits()
     {
