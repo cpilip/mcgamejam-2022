@@ -40,8 +40,8 @@
    * Draw custom platform tilesets
    * Change cage to represent a Nighthare eye effect
    * Animate and add Nighthare in the background of a dimension
-* **Settings**
-   * Volume controls
+* 💚 **Settings**
+   * ~~Volume controls~~
    * Disable timer for a "narrative mode"
 * **User interface**
    * Display each collected charm piece
