@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
+using System.Collections.Generic;
 
-enum Dimension
+public enum Dimension
 {
     RED,
     GREEN,
@@ -39,11 +38,11 @@ public class SceneStateManager : MonoBehaviour
     private bool menuUp, gotRiddle;
     private GameObject menu;
 
+    //Dimension
     [SerializeField] private Dimension m_currentDim = Dimension.RED;
-    [SerializeField] public static bool m_puzzleSolvedGreen = false;
-    [SerializeField] public static bool m_puzzleSolvedRed = false;
-    [SerializeField] public static bool m_puzzleSolvedBlue = false;
-    public  static bool burrowTeleporter;
+    private static List<Dimension> m_accessible = new List<Dimension>();
+
+    public static bool burrowTeleporter;
     public static bool[] statueStates = { false, true, false, true };
     public static bool[] wallStates = { false, false, false, false };
     public static bool[] lightStates = { false, false, false, false, false, false };
@@ -55,6 +54,9 @@ public class SceneStateManager : MonoBehaviour
     }
     void OnEnable()
     {
+        m_accessible.Add(Dimension.RED);
+        m_accessible.Add(Dimension.GREEN);
+        m_accessible.Add(Dimension.BLUE);
         SceneManager.sceneLoaded += InitializeSceneData;
     }
 
@@ -81,7 +83,6 @@ public class SceneStateManager : MonoBehaviour
                 Transform note = interactables[0].transform.GetChild(1);
 
                 note.gameObject.GetComponent<InteractableNote>().ResetState();
-                
 
                 break;
             case 2:
@@ -119,9 +120,7 @@ public class SceneStateManager : MonoBehaviour
             case 4:
                 Debug.Log("Swapped to Burrow.");
 
-                
-                
-
+                SetNextDimension();
                 break;
             case 5:
                 Debug.Log("Swapped to Finale.");
@@ -132,79 +131,33 @@ public class SceneStateManager : MonoBehaviour
 
         }
 
-        SetNextDimension();
+        
 
     }
 
-    void SetNextDimension()
+    private void SetNextDimension()
     {
-        switch (m_currentDim)
+        //Debug.Log("A " + String.Join("", new List<Dimension>(m_accessible).ConvertAll(i => i.ToString()).ToArray()));
+
+        if (m_accessible.Count > 0)
         {
-            case Dimension.RED:
+            m_currentDim = m_accessible[0];
+            m_accessible.RemoveAt(0);
+            m_accessible.Add(m_currentDim);
+        }
+        else
+        {
+            m_currentDim = Dimension.RETURNTOBURROW;
+        }
+        //Debug.Log("B " + String.Join("", new List<Dimension>(m_accessible).ConvertAll(i => i.ToString()).ToArray()) + " " + m_currentDim);
+    }
 
-                if (!m_puzzleSolvedGreen)
-                {
-                    m_currentDim = Dimension.GREEN;
-                }
-                else if (!m_puzzleSolvedBlue)
-                {
-                    m_currentDim = Dimension.BLUE;
-                }
-                else if (!m_puzzleSolvedRed)
-                {
-                    m_currentDim = Dimension.RED;
-                }
-                else
-                {
-                    m_currentDim = Dimension.RETURNTOBURROW;
-                }
-
-                break;
-
-            case Dimension.GREEN:
-
-                if (!m_puzzleSolvedBlue)
-                {
-                    m_currentDim = Dimension.BLUE;
-                }
-                else if (!m_puzzleSolvedRed)
-                {
-                    m_currentDim = Dimension.RED;
-                }
-                else if (!m_puzzleSolvedGreen)
-                {
-                    m_currentDim = Dimension.GREEN;
-                }
-                else
-                { 
-                    m_currentDim = Dimension.RETURNTOBURROW;
-                }
-                
-                break;
-
-            case Dimension.BLUE:
-
-                if (!m_puzzleSolvedRed)
-                {
-                    m_currentDim = Dimension.RED;
-                }
-                else if (!m_puzzleSolvedGreen)
-                {
-                    m_currentDim = Dimension.GREEN;
-                }
-                else if (!m_puzzleSolvedBlue)
-                {
-                    m_currentDim = Dimension.BLUE;
-                }
-                else
-                { 
-                    m_currentDim = Dimension.RETURNTOBURROW;
-                }
-
-                break;
-            default:
-                Debug.Log("All puzzles completed, no more dim swapping.");
-                break;
+    public static void CompletedDimension(Dimension d)
+    {
+        if (m_accessible.Contains(d))
+        {
+            m_accessible.Remove(d);
+            return;
         }
     }
 
@@ -267,21 +220,15 @@ public class SceneStateManager : MonoBehaviour
         if (burrowTeleporter)
         {
             burrowTeleporter = false;
-            Debug.Log("Burrow!");
             switch (m_currentDim)
             {
                 case Dimension.RED:
-                    Debug.Log(m_sceneTransitioner);
                     m_sceneTransitioner.FadeToLevel(1);
                     break;
                 case Dimension.GREEN:
-
-                    Debug.Log(m_sceneTransitioner);
                     m_sceneTransitioner.FadeToLevel(3);
                     break;
                 case Dimension.BLUE:
-
-                    Debug.Log(m_sceneTransitioner);
                     m_sceneTransitioner.FadeToLevel(2);
                     break;
 
@@ -294,18 +241,16 @@ public class SceneStateManager : MonoBehaviour
 
         }
 
-        if (m_puzzleSolvedRed && SceneManager.GetActiveScene().name.Equals("Red"))
-        {
-            m_sceneTransitioner.FadeToLevel(4);
-        }
-        if (m_puzzleSolvedGreen && SceneManager.GetActiveScene().name.Equals("Green"))
+        if ((!m_accessible.Contains(Dimension.RED) && SceneManager.GetActiveScene().name.Equals("Red")) || 
+            (!m_accessible.Contains(Dimension.GREEN) && SceneManager.GetActiveScene().name.Equals("Green")) ||
+            (!m_accessible.Contains(Dimension.BLUE) && SceneManager.GetActiveScene().name.Equals("Blue")))
         {
             m_sceneTransitioner.FadeToLevel(4);
         }
 
-        if (m_puzzleSolvedBlue && SceneManager.GetActiveScene().name.Equals("Blue"))
+        if (m_accessible.Count == 0 && SceneManager.GetActiveScene().name.Equals("Burrow"))
         {
-            m_sceneTransitioner.FadeToLevel(4);
+            m_sceneTransitioner.transform.GetChild(1).gameObject.SetActive(true);
         }
 
 

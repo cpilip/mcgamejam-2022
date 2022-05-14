@@ -16,7 +16,7 @@ public class CharacterInteractor : MonoBehaviour
     {
         if (Input.GetButtonDown("Interact") && m_current)
         {
-            Debug.Log("Interacted with " + m_current.gameObject.name);
+            //Debug.Log("Interacted with " + m_current.gameObject.name);
             m_current.SendMessage("InteractWith");
         }
     }

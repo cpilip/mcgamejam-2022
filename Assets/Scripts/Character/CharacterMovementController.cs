@@ -14,7 +14,6 @@ public class CharacterMovementController : MonoBehaviour
     private CharacterController controller;
     private bool jumping = false;
 
-    // Start is called before the first frame update
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -25,7 +24,6 @@ public class CharacterMovementController : MonoBehaviour
         SceneManager.sceneLoaded += ResetToStartPosition;
     }
 
-    // Update is called once per frame
     void Update()
     {
         float isMoving = Input.GetAxisRaw("Horizontal");
