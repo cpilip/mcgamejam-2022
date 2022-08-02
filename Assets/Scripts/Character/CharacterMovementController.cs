@@ -14,10 +14,14 @@ public class CharacterMovementController : MonoBehaviour
     private CharacterController controller;
     private bool jumping = false;
 
+    private SoundManager smgr;
+
     // Start is called before the first frame update
     void Awake()
     {
         controller = GetComponent<CharacterController>();
+        // sound manager for jump
+        smgr = GameObject.FindWithTag("SFX").GetComponent<SoundManager>();
     }
 
     void OnEnable ()
@@ -44,6 +48,8 @@ public class CharacterMovementController : MonoBehaviour
         {
             jumping = true;
             anim.SetTrigger("Jump");
+            // play jump sound
+            smgr.Play("jump");
         }
     }
 

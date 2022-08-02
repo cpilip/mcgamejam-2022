@@ -35,9 +35,10 @@ public class SceneStateManager : MonoBehaviour
     }
 
     public bool debugMode;
-    public GameObject ctrlMenu, riddleMenu;
-    private bool menuUp, gotRiddle;
+    public GameObject ctrlMenu;
+    private bool menuUp;
     private GameObject menu;
+    private string sceneName;
 
     [SerializeField] private Dimension m_currentDim = Dimension.RED;
     [SerializeField] public static bool m_puzzleSolvedGreen = false;
@@ -208,52 +209,6 @@ public class SceneStateManager : MonoBehaviour
         }
     }
 
-    public void GetRiddle()
-    {
-        gotRiddle = true;
-        ShowRiddle();
-    }
-
-    void ShowRiddle()
-    {
-        menuUp = true;
-        menu = Instantiate(riddleMenu, FindObjectOfType<Canvas>().transform);
-        Debug.Log(m_currentDim + " CALLED IN DIMENS");
-        switch (m_currentDim)
-        {
-            case Dimension.RED:
-                menu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "You can't be caught, do not be killed\n"
-                                                                                            + "Your blood must pump, must not be spilled.\n"
-                                                                                            + "So keep your eyes upon the beast\n"
-                                                                                            + "Who sees you there, an evening feast\n"
-                                                                                            + "And pray the one, with kit in tow,\n"
-                                                                                            + "She will not see the fangs below\n"
-                                                                                            + "The blades of grass and gleaming eyes\n"
-                                                                                            + "That stare and spell his sure demise.";
-                break;
-
-            case Dimension.GREEN:
-                menu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "The wind shall blow, the rain shall fall\n"
-                                                                                            + "And to traverse this ancient hall\n"
-                                                                                            + "The song of seasons you must sing,\n"
-                                                                                            + "To hide among the verdant spring.\n"
-                                                                                            + "To choose the one that does not match\n"
-                                                                                            + "Shall send you tumbling down the hatch\n";
-                break;
-
-            case Dimension.BLUE:
-                menu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Dark cannot be seen, cannot be felt,\n"
-                                                                                            + "Cannot be heard, cannot be smelt.\n"
-                                                                                            + "The more you have, the less you'll see.\n"
-                                                                                            + "Here in the deep and dim black sea.\n"
-                                                                                            + "We welcome night by twinkling bright,\n"
-                                                                                            + "so catch us all to bring the light.";
-                break;
-            default:
-                Debug.Log("No riddle found in scene");
-                break;
-        }
-    }
     public void GoToNextDim()
     {
         Debug.Log("Bool is true.");
@@ -341,21 +296,6 @@ public class SceneStateManager : MonoBehaviour
                 menu = Instantiate(ctrlMenu, FindObjectOfType<Canvas>().transform);
                 Debug.Log(menu);
                 menuUp = true;
-            }
-            else if (menuUp)
-            {
-                Destroy(menu);
-                menuUp = false;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (!menuUp)
-            {
-                if (gotRiddle)
-                {
-                    ShowRiddle();
-                }
             }
             else if (menuUp)
             {

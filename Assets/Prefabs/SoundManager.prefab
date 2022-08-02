@@ -52,15 +52,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 8feaee314aa03754bae266e425111d11, type: 3}
     name: warp
-    volume: 0.394
-    source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: ac3dc80099673c142b2e05bac9016dda, type: 3}
-    name: musicBurrow
-    volume: 0
-    source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 7f08b1370ce284342996cf1d720dc0c4, type: 3}
-    name: musicBlue
-    volume: 0
+    volume: 0.5
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: a02c249541616ec4084997b0203ad3a2, type: 3}
     name: lo
@@ -70,11 +62,38 @@ MonoBehaviour:
     name: bo
     volume: 0.75
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: ae244d1c055d8734494caa2b24084e1d, type: 3}
-    name: musicGreen
-    volume: 0.75
+  - clip: {fileID: 8300000, guid: fb795f7d7ae96754ca0af3b129761021, type: 3}
+    name: jump
+    volume: 1
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 8b375cb4e1dadf64a95089852e1bab35, type: 3}
+    name: page
+    volume: 1
+    source: {fileID: 0}
+  music:
   - clip: {fileID: 8300000, guid: 552d3d3fa1922274a841d0b95b270e1e, type: 3}
     name: musicMenu
-    volume: 0.75
+    volume: 1
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: ac3dc80099673c142b2e05bac9016dda, type: 3}
+    name: musicBurrow
+    volume: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 5de583f86253d7140a24b5df18ff4e19, type: 3}
+    name: musicRed
+    volume: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: ae244d1c055d8734494caa2b24084e1d, type: 3}
+    name: musicGreen
+    volume: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 7f08b1370ce284342996cf1d720dc0c4, type: 3}
+    name: musicBlue
+    volume: 1
+    source: {fileID: 0}
+  masterVolumeSlider: {fileID: 0}
+  SFXVolumeSlider: {fileID: 0}
+  musicVolumeSlider: {fileID: 0}
+  masterVolume: 1
+  SFXVolume: 0.75
+  musicVolume: 0.75

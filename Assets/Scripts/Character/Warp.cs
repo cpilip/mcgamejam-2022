@@ -23,7 +23,7 @@ public class Warp : MonoBehaviour
     {
         isRunning = false;
         white = gameObject.transform.GetChild(3).GetComponent<SpriteRenderer>(); // prefab asserts child order, white image will be 3rd
-        Debug.Log("Acquired Sprite Renderer of GameObject \"" + gameObject.transform.GetChild(3).name + "\"");
+        // Debug.Log("Acquired Sprite Renderer of GameObject \"" + gameObject.transform.GetChild(3).name + "\"");
         smgr = GameObject.FindWithTag("SFX").GetComponent<SoundManager>();
     }
 

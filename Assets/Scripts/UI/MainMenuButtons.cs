@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtons : MonoBehaviour
 {
-    public GameObject credits;
+    public GameObject credits, settings;
     private SoundManager smgr;
 
-    private void Awake()
+    private void Start()
     {
         credits.SetActive(false);
+        settings.SetActive(false);
         smgr = GameObject.FindWithTag("SFX").GetComponent<SoundManager>();
         smgr.StartFadeIn("musicMenu");
     }
@@ -30,6 +31,14 @@ public class MainMenuButtons : MonoBehaviour
     public void CloseCredits()
     {
         credits.SetActive(false);
+    }
+    public void OpenSettings()
+    {
+        settings.SetActive(true);
+    }
+    public void CloseSettings()
+    {
+        settings.SetActive(false);
     }
     public void QuitGame()
     {
